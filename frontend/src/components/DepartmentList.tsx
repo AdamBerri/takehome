@@ -35,6 +35,7 @@ export const DepartmentList = () => {
 
 			<ul>
 				{departments.map(d =>
+					// key React error needed to be resolved, added id as the key
 					<li key={d.id}>
 						{/* adding link so that you can navigate to the details right after */}
 						<Link to={`/department/${d.id}`}>{d.name}</Link>

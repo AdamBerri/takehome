@@ -1,6 +1,0 @@
-Changes 
-1.   /v1/department to /v1/departments Reason: typo_bug
-2.  {departments.map((d, i) => <li key={i}>{d.name}</li>) Reason: Add a key prop so React stops giving me console error
-3. EmployeeList type says that id is a string, molly’s was a number so I fixed that 
-4. Started putting the arrays into a .json to be imported because it would be more like the real world (query) but then decided against it because there was some new Date functionality that would have been messed up
-5. 
