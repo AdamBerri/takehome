@@ -8,7 +8,7 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
     //but I decided to keep it simple and just check if the id is valid
     //Also new DATE() made it tedious to put into json
     // ****
-    // Realized that I need ot actually provide department details and not just employees. Bandaged this up by havin gthe name of the department pushed on the client side
+    // Realized that I need to actually provide department details and not just employees. Bandaged this up by having the name of the department pushed on the client side
     // ****
     if (department_id == "2") {
         res.send([

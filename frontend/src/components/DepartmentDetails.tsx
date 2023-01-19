@@ -9,8 +9,10 @@ export const DepartmentDetails = () => {
 	// Had to typescript verify the id is a string with { id: string }
 	let { id } = useParams<{ id: string }>();
 
-	// needed to get the name from the location state
-	let name = useLocation<any>().state.name;
+	// I am aware that if you navigate to this page without going through the department list page, the department name will not show
+	// This was bandaged after not including department details in the server response (see comment there)
+	let body = useLocation<any>().state ?? "";
+	let department_name: string = (body) ? body.name : "";
 
 	useEffect(() => {
 
@@ -35,7 +37,7 @@ export const DepartmentDetails = () => {
 
 	return (
 		<>
-			<h1>Employees in {name} ID: {id}</h1>
+			<h1>Employees in {department_name} ID: {id}</h1>
 			<ul>
 				{employees.map(d =>
 					<li key={d.id}>
