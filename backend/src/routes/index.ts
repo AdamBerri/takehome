@@ -3,6 +3,10 @@ const router: Router = Router()
 
 router.get('/v1/departments/:id', (_req: Request, res: Response) => {
     const department_id = _req.params.id
+    //added this if statement to check if the department id is valid
+    //Did not want to do it this way because its not DRY and debated putting everything in a .json to simulate a database
+    //but I decided to keep it simple and just check if the id is valid
+    //Also new DATE() made it tedious to put into json
     if (department_id == "2") {
         res.send([
             {
@@ -50,6 +54,8 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
             }
         ])
     }
+    //throw error if the department id is not valid
+    //technically this is not the best way of doing it because it will throw an error if a unsuitable id is passed
     else {
         res.status(404).send({ message: "ID Does Not Exist" })
     }
@@ -108,9 +114,9 @@ router.get('/v1/employees', (_unused: Request, res: Response) => {
             departmentId: "2"
         },
         {
-            id: "zc",
+            id: "zc", //I left this as zc but I could have made it a number.
             name: "Juan Cortez",
-            birthday: new Date('1984-09-22'),
+            birthday: new Date('1984-09-22'), //Changed all of the dates to be datetime objects
             bio: "Juan's been programming computers since the days of ATARI BASIC.",
             departmentId: "4"
         }

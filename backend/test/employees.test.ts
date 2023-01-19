@@ -49,6 +49,7 @@ describe('#employees', () => {
         expect(res.body.error).to.be.undefined;
     })
 
+    //Making sure the 404 is launched when its the wrong department
     it('Department ID should not work for 6 (out of bounds)', async () => {
         const res = await request(app.service).get('/v1/departments/6').send();
         expect(res.status).to.equal(404);

@@ -36,6 +36,7 @@ export const DepartmentList = () => {
 			<ul>
 				{departments.map(d =>
 					<li key={d.id}>
+						{/* adding link so that you can navigate to the details right after */}
 						<Link to={`/department/${d.id}`}>{d.name}</Link>
 					</li>)}
 			</ul>

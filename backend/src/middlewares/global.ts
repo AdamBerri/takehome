@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { HTTPError, notFound } from '../lib/errors'
 
-
+// honestly not even sure if this works but it's here
 export const fourOhFourHandler = (_req: Request, _res: Response, next: NextFunction) => {
     next(notFound)
 }
@@ -16,6 +16,7 @@ export const catchAll = (error: Error, _req: Request, res: Response, _next: Next
     let code = (<HTTPError>error).code || 500
 
     res.status(code).send({
+        // checked to see if the error message was showing in the response when I passed an invalid id and it was
         message: error.message,
         // stack: error.stack
     })
@@ -30,6 +31,8 @@ export const cors = (req: Request, res: Response, next: NextFunction) => {
     if (req.method == 'OPTIONS' || req.method == 'HEAD') { return res.status(200).end() }
 
     // Do a 5 second timeout if the request is not processed
+    // The time out function that was written here did not make sense to me because it wasn't looking at the difference in time
+    // this way if therre is a timeout it will send a 408 error
     setTimeout(() => {
         if (!res.headersSent) {
             res.status(408).send({ message: "Request timed out" })

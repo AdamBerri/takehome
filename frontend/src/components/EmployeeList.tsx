@@ -42,6 +42,7 @@ type EmployeeDetailProps = {
 const EmployeeDetail = ({ employee }: EmployeeDetailProps) => {
 	return (
 		<li className="employee_detail">
+			{/* Added react-router links so everything smooths out together and you can always navigate where you want */}
 			<Link to={`/employee/${employee.id}`}>
 				<h3>{employee.name}</h3>
 			</Link>

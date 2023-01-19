@@ -5,6 +5,8 @@ import api from "../utils/api"
 import { Link } from "react-router-dom";
 export const DepartmentDetails = () => {
 	const [employees, setEmployees] = useState<Employee[] | undefined>()
+	// needed useParams to get the id from the url
+	// Had to typescript verify the id is a string with { id: string }
 	let { id } = useParams<{ id: string }>();
 
 	useEffect(() => {
@@ -34,6 +36,7 @@ export const DepartmentDetails = () => {
 			<ul>
 				{employees.map(d =>
 					<li key={d.id}>
+						{/* Didn't want to also put employee details there so I just said let me link directly to the employee deatail page from here */}
 						<Link to={`/employee/${d.id}`}>{d.name}</Link>
 					</li>)}
 			</ul>
