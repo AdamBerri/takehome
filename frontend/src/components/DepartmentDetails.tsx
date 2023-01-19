@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Employee } from "../models/Models"
 import api from "../utils/api"
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ export const DepartmentDetails = () => {
 	// needed useParams to get the id from the url
 	// Had to typescript verify the id is a string with { id: string }
 	let { id } = useParams<{ id: string }>();
+
+	// needed to get the name from the location state
+	let name = useLocation<any>().state.name;
 
 	useEffect(() => {
 
@@ -32,7 +35,7 @@ export const DepartmentDetails = () => {
 
 	return (
 		<>
-			<h2>Employees in Department {id}</h2>
+			<h1>Employees in {name} ID: {id}</h1>
 			<ul>
 				{employees.map(d =>
 					<li key={d.id}>
