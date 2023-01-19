@@ -5,15 +5,41 @@ header {
   padding: 20px;
 }
 
-header > h1 {
+header>h1 {
   font-size: 2em;
 }
 
-header > ul > li {
+header>ul>li {
   display: inline;
   padding: 10px;
 }
 
 .mainContent {
   padding: 1em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f2f2f2;
+}
+
+li:active {
+  background-color: #e6e6e6;
+}
+
+li a {
+  color: inherit;
+  text-decoration: none;
 }

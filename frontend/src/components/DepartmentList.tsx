@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Department } from "../models/Models"
 import api from "../utils/api"
+import { Link } from "react-router-dom";
+
 
 export const DepartmentList = () => {
 	const [departments, setDepartments] = useState<Department[] | undefined>()
@@ -32,7 +34,10 @@ export const DepartmentList = () => {
 			<h2>Department List</h2>
 
 			<ul>
-				{departments.map(d => <li key={d.id}>{d.name}</li>)}
+				{departments.map(d =>
+					<li key={d.id}>
+						<Link to={`/department/${d.id}`}>{d.name}</Link>
+					</li>)}
 			</ul>
 		</>
 	)
