@@ -1,5 +1,4 @@
 import { Router, Response, Request } from 'express'
-
 const router: Router = Router()
 
 router.get('/v1/departments/:id', (_req: Request, res: Response) => {
@@ -7,7 +6,7 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
     if (department_id == "2") {
         res.send([
             {
-                id: 82338,
+                id: "82338",
                 name: "Molly Davis",
                 birthday: new Date("1985-09-27"),
                 bio: "Molly once found a bug in a compiler",
@@ -22,7 +21,7 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
             }
         ])
     }
-    if (department_id == "3") {
+    else if (department_id == "3") {
         res.send([
             {
                 id: "82837",
@@ -33,7 +32,7 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
             },
         ])
     }
-    if (department_id == "4") {
+    else if (department_id == "4") {
         res.send([
             {
                 id: "81832",
@@ -45,16 +44,15 @@ router.get('/v1/departments/:id', (_req: Request, res: Response) => {
             {
                 id: "zc",
                 name: "Juan Cortez",
-                birthday: '1984-09-22',
+                birthday: new Date('1984-09-22'),
                 bio: "Juan's been programming computers since the days of ATARI BASIC.",
                 departmentId: "4"
             }
         ])
     }
-    //raise error
-    res.sendStatus(400)
-    res.render('error', { error: "This Department ID Does Not Exist" })
-
+    else {
+        res.status(404).send({ message: "ID Does Not Exist" })
+    }
 })
 
 
@@ -112,7 +110,7 @@ router.get('/v1/employees', (_unused: Request, res: Response) => {
         {
             id: "zc",
             name: "Juan Cortez",
-            birthday: '1984-09-22',
+            birthday: new Date('1984-09-22'),
             bio: "Juan's been programming computers since the days of ATARI BASIC.",
             departmentId: "4"
         }
